@@ -16,4 +16,4 @@ jobs:
         username: ${{ secrets.DH_USERNAME }}
         password: ${{ secrets.DH_PASSWORD }}
     - name: Tag and Push
-      run: make publish
+      run: make publish publish-latest
