@@ -11,7 +11,7 @@ publish: $(DOCKER_FILES)
 
 # MAIN PUBLISH
 $(DOCKER_FILES): %/Dockerfile: %/alpine-tags
-	@sed "s/%VERSION%/$$MAIN_VERSION/" $@ > Dockerfile
+	@sed "s/%VERSION%/$(shell sort -Vr $< | head -n1)/" $@ > Dockerfile
 	@docker build -t $(IMAGE_NAME):latest .
 	@for version in $(shell sort -Vr $<); do \
 	  [ -n "$$version" ] && docker image tag $(IMAGE_NAME):latest $(IMAGE_NAME):$$MAIN_VERSION; \
