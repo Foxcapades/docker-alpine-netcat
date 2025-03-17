@@ -22,7 +22,6 @@ $(DOCKER_FILES): %/Dockerfile: %/alpine-tags
 
 # PUSH LATEST
 .PHONY: publish-latest
-publish-latest: LATEST_TAG = $(lastword $(sort $(VERSIONS)))
 publish-latest: $(DOCKER_FILES)
-	@docker image tag $(IMAGE_NAME):$(LATEST_TAG) $(IMAGE_NAME):latest
+	@docker image tag $(IMAGE_NAME):$(lastword $(sort $(VERSIONS))) $(IMAGE_NAME):latest
 	@docker image push $(IMAGE_NAME):latest
