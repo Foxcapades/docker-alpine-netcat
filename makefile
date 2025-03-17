@@ -7,7 +7,7 @@ default:
 	@echo "no"
 
 .PHONY: publish
-publish: $(DOCKER_FILES) pubish-latest
+publish: $(DOCKER_FILES) publish-latest
 
 # MAIN PUBLISH
 $(DOCKER_FILES): %/Dockerfile: %/alpine-tags
